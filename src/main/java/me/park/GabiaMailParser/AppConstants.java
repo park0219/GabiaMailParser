@@ -38,6 +38,8 @@ public class AppConstants {
     public static final String MAILVIEW_WRITE = "메일 쓰기";
     public static final String MAILVIEW_TEMP_UPDATE = "메일 템플릿 수정";
     public static final String IMPORTANT_FAIL = "중요 메일 수정 과정에서 오류가 발생했습니다.";
+    public static final String TOGGLE_ALL = "전체 메일";
+    public static final String TOGGLE_IMPORTANT = "중요 메일";
 
     // add view
     public static final String ADDVIEW_TITLE = "添加学生信息";

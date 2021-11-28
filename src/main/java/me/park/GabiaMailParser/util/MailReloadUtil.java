@@ -2,6 +2,7 @@ package me.park.GabiaMailParser.util;
 
 import me.park.GabiaMailParser.AppConstants;
 import me.park.GabiaMailParser.dao.MailDAO;
+import me.park.GabiaMailParser.view.MainView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +20,7 @@ public class MailReloadUtil extends TimerTask {
         if(MailUtil.user_id != null && !MailUtil.user_id.equals("")) {
 
             int newMailNum = MailUtil.getMailListFromServer();
-            String[][] result = MailDAO.getInstance().selectMailList("", "N");
+            String[][] result = MailDAO.getInstance().selectMailList("", MainView.jToggleButton1.isSelected() ? "N" : "Y");
             initJTable(jTable, result);
 
             if(newMailNum > 0) {

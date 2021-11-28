@@ -1,5 +1,6 @@
 package me.park.GabiaMailParser.view;
 
+import com.sun.mail.imap.protocol.Item;
 import me.park.GabiaMailParser.AppConstants;
 import me.park.GabiaMailParser.dao.MailDAO;
 import me.park.GabiaMailParser.util.MailUtil;
@@ -16,6 +17,8 @@ public class MainView extends JFrame {
     private static final long serialVersionUID = 5870864087464173884L;
     private JPanel jPanelNorth, jPanelCenter;
     private JButton jButtonAdd, jButtonUpdate, jButtonFind;
+    public static JToggleButton jToggleButton1, jToggleButton2;
+    private ButtonGroup buttonGroup;
     private JTextField condition;
     public static JTable jTable;
     private JScrollPane jScrollPane;
@@ -32,10 +35,24 @@ public class MainView extends JFrame {
 
         // 윗쪽 패널
         jPanelNorth = new JPanel();
-        jPanelNorth.setLayout(new GridLayout(1, 5));
+        jPanelNorth.setLayout(new GridLayout(1, 6));
         condition = new JTextField();
         condition.addKeyListener(new FindListener());
         jPanelNorth.add(condition);
+        // 중요 메일 토글 버튼
+        jToggleButton1 = new JToggleButton(AppConstants.TOGGLE_ALL, true);
+        jToggleButton2 = new JToggleButton(AppConstants.TOGGLE_IMPORTANT, false);
+        buttonGroup = new ButtonGroup();
+        buttonGroup.add(jToggleButton1);
+        buttonGroup.add(jToggleButton2);
+
+        jToggleButton1.addItemListener(e -> {
+            String[][] result = MailDAO.getInstance().selectMailList("", MainView.jToggleButton1.isSelected() ? "N" : "Y");
+            initJTable(jTable, result);
+        });
+
+        jPanelNorth.add(jToggleButton1);
+        jPanelNorth.add(jToggleButton2);
         // 찾기 버튼
         jButtonFind = new JButton(AppConstants.MAILVIEW_FIND);
         jButtonFind.addActionListener(e -> find());
@@ -61,7 +78,7 @@ public class MainView extends JFrame {
         // 메일 목록 가져오기
         int newMailNum = MailUtil.getMailListFromServer();
 
-        String[][] result = MailDAO.getInstance().selectMailList("", "N");
+        String[][] result = MailDAO.getInstance().selectMailList("", MainView.jToggleButton1.isSelected() ? "N" : "Y");
         myTableModel = new DefaultTableModel(result, columns) {
             @Override
             public boolean isCellEditable(int row, int column) {
