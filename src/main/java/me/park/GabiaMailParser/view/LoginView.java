@@ -73,7 +73,7 @@ public class LoginView extends JFrame {
             LoginDAO.getInstance().insertLoginInfo(id);
 
             dispose();
-            //new MainView();
+            new MainView();
         }
         else {
             username.setText("");

@@ -14,15 +14,11 @@ public class AppConstants {
     public static final String SMTPSERVER = "smtps.hiworks.com";
     public static final String SMTPPORT = "465";
 
-    // student field
-    public static final String STUDENT_NAME = "姓名";
-    public static final String STUDENT_SNO = "学号";
-    public static final String STUDENT_SEX = "性别";
-    public static final String STUDENT_DEPARTMETN = "院系";
-    public static final String STUDENT_HOMETOWN = "籍贯";
-    public static final String STUDENT_EMAIL = "电子邮件";
-    public static final String STUDENT_TEL = "联系方式";
-    public static final String STUDENT_MARK = "学分";
+    // 메일 목록 field
+    public static final String MAIL_TITLE = "제목";
+    public static final String MAIL_FROM = "보낸사람";
+    public static final String MAIL_DATE = "보낸날짜";
+    public static final String MAIL_IMPORTANT = "중요메일";
 
     // login view
     public static final String LOGIN_TITLE = "가비아 계정으로 로그인하기";
@@ -32,19 +28,10 @@ public class AppConstants {
     public static final String LOGIN_FAIL = "로그인에 실패하였습니다.";
 
     // main view
-    public static final String MAINVIEW_TITLE = "学生信息管理系统";
-    public static final String MAINVIEW_PAGENUM_JLABEL_DI = "第 ";
-    public static final String MAINVIEW_PAGENUM_JLABEL_YE = "/99 页";
-    public static final String MAINVIEW_FIND_JLABEL = "查询结果";
-    public static final String MAINVIEW_FIRST = "首页";
-    public static final String MAINVIEW_LAST = "末页";
-    public static final String MAINVIEW_PRE = "上一页";
-    public static final String MAINVIEW_NEXT = "下一页";
-    public static final String PARAM_FIND_CONDITION = "";
-    public static final String PARAM_FIND = "查找";
-    public static final String PARAM_ADD = "添加";
-    public static final String PARAM_DELETE = "删除";
-    public static final String PARAM_UPDATE = "更新";
+    public static final String MAINVIEW_TITLE = "메일 목록";
+    public static final String MAILVIEW_FIND = "제목으로 검색";
+    public static final String MAILVIEW_WRITE = "메일 쓰기";
+    public static final String MAILVIEW_TEMP_UPDATE = "메일 템플릿 수정";
 
     // add view
     public static final String ADDVIEW_TITLE = "添加学生信息";
