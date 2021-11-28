@@ -83,11 +83,10 @@ public class MailUtil {
 
                 Mail mail = new Mail(user_id, title, from, date, "N");
 
-                MailDAO.getInstance().insertMailList(mail);
+                if(MailDAO.getInstance().insertMailList(mail)) {
+                    result++;
+                }
             }
-
-            folder.close(false);
-            store.close();
         }
         catch(Exception e) {
             e.printStackTrace();

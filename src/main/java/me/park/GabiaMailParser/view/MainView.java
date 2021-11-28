@@ -67,7 +67,7 @@ public class MainView extends JFrame {
         jPanelCenter.setLayout(new GridLayout(1, 1));
 
         // 메일 목록 가져오기
-        MailUtil.getMailListFromServer();
+        int newMailNum = MailUtil.getMailListFromServer();
 
         String[][] result = MailDAO.getInstance().selectMailList("");
         myTableModel = new DefaultTableModel(result, columns);
@@ -87,6 +87,10 @@ public class MainView extends JFrame {
         setResizable(false);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
+
+        if(newMailNum > 0) {
+            JOptionPane.showMessageDialog(null, newMailNum + AppConstants.NEW_MAIL);
+        }
     }
 
     public static void initJTable(JTable jTable, String[][] result) {
