@@ -94,7 +94,7 @@ public class MailDAO {
             params = new String[]{MailUtil.user_id};
         }
         else {
-            sql = "SELECT MAIL_SEQ, USER_ID, MAIL_TITLE, MAIL_FROM, MAIL_DATE, MAIL_IMPORTANT, REGISTRATION_DATE FROM mail WHERE USER_ID = ? AND MAIL_TITLE = ?";
+            sql = "SELECT MAIL_SEQ, USER_ID, MAIL_TITLE, MAIL_FROM, MAIL_DATE, MAIL_IMPORTANT, REGISTRATION_DATE FROM mail WHERE USER_ID = ? AND MAIL_TITLE LIKE ?";
             params = new String[]{MailUtil.user_id, "%" + searchWord + "%"};
         }
         if(importantYN != null && importantYN.equals("Y")) {

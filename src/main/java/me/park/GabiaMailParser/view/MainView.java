@@ -39,20 +39,7 @@ public class MainView extends JFrame {
         condition = new JTextField();
         condition.addKeyListener(new FindListener());
         jPanelNorth.add(condition);
-        // 중요 메일 토글 버튼
-        jToggleButton1 = new JToggleButton(AppConstants.TOGGLE_ALL, true);
-        jToggleButton2 = new JToggleButton(AppConstants.TOGGLE_IMPORTANT, false);
-        buttonGroup = new ButtonGroup();
-        buttonGroup.add(jToggleButton1);
-        buttonGroup.add(jToggleButton2);
 
-        jToggleButton1.addItemListener(e -> {
-            String[][] result = MailDAO.getInstance().selectMailList("", MainView.jToggleButton1.isSelected() ? "N" : "Y");
-            initJTable(jTable, result);
-        });
-
-        jPanelNorth.add(jToggleButton1);
-        jPanelNorth.add(jToggleButton2);
         // 찾기 버튼
         jButtonFind = new JButton(AppConstants.MAILVIEW_FIND);
         jButtonFind.addActionListener(e -> find());
@@ -70,6 +57,21 @@ public class MainView extends JFrame {
             //new UpdateView();
         });
         jPanelNorth.add(jButtonUpdate);
+
+        // 중요 메일 토글 버튼
+        jToggleButton1 = new JToggleButton(AppConstants.TOGGLE_ALL, true);
+        jToggleButton2 = new JToggleButton(AppConstants.TOGGLE_IMPORTANT, false);
+        buttonGroup = new ButtonGroup();
+        buttonGroup.add(jToggleButton1);
+        buttonGroup.add(jToggleButton2);
+
+        jToggleButton1.addItemListener(e -> {
+            String[][] result = MailDAO.getInstance().selectMailList("", MainView.jToggleButton1.isSelected() ? "N" : "Y");
+            initJTable(jTable, result);
+        });
+
+        jPanelNorth.add(jToggleButton1);
+        jPanelNorth.add(jToggleButton2);
 
         // center panel
         jPanelCenter = new JPanel();
@@ -155,7 +157,6 @@ public class MainView extends JFrame {
     }
 
     private class FindListener extends KeyAdapter {
-
         @Override
         public void keyPressed(KeyEvent e) {
             if(e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -166,14 +167,8 @@ public class MainView extends JFrame {
 
     private void find() {
         String param = condition.getText();
-        if("".equals(param) || param == null) {
-            initJTable(MainView.jTable, null);
-            return;
-        }
-        //String[][] result = ((StudentDAO) BaseDAO.getAbilityDAO(DAO.StudentDAO)).queryByName(param);
-        String[][] result = {{}, {}};
-        condition.setText("");
-        initJTable(MainView.jTable, result);
+        String[][] result = MailDAO.getInstance().selectMailList(param, MainView.jToggleButton1.isSelected() ? "N" : "Y");
+        initJTable(jTable, result);
     }
 
 }
