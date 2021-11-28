@@ -37,6 +37,7 @@ public class AppConstants {
     public static final String MAILVIEW_FIND = "제목으로 검색";
     public static final String MAILVIEW_WRITE = "메일 쓰기";
     public static final String MAILVIEW_TEMP_UPDATE = "메일 템플릿 수정";
+    public static final String IMPORTANT_FAIL = "중요 메일 수정 과정에서 오류가 발생했습니다.";
 
     // add view
     public static final String ADDVIEW_TITLE = "添加学生信息";

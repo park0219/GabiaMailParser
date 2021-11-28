@@ -84,19 +84,23 @@ public class MailDAO {
         return result;
     }
 
-    public String[][] selectMailList(String searchWord) {
+    public String[][] selectMailList(String searchWord, String importantYN) {
         String[][] result = null;
 
         String sql;
         String[] params;
         if(searchWord.equals("")) {
-            sql = "SELECT MAIL_SEQ, USER_ID, MAIL_TITLE, MAIL_FROM, MAIL_DATE, MAIL_IMPORTANT, REGISTRATION_DATE FROM mail WHERE USER_ID = ? ORDER BY MAIL_DATE DESC";
+            sql = "SELECT MAIL_SEQ, USER_ID, MAIL_TITLE, MAIL_FROM, MAIL_DATE, MAIL_IMPORTANT, REGISTRATION_DATE FROM mail WHERE USER_ID = ?";
             params = new String[]{MailUtil.user_id};
         }
         else {
-            sql = "SELECT MAIL_SEQ, USER_ID, MAIL_TITLE, MAIL_FROM, MAIL_DATE, MAIL_IMPORTANT, REGISTRATION_DATE FROM mail WHERE USER_ID = ? AND MAIL_TITLE = ? ORDER BY MAIL_DATE DESC";
+            sql = "SELECT MAIL_SEQ, USER_ID, MAIL_TITLE, MAIL_FROM, MAIL_DATE, MAIL_IMPORTANT, REGISTRATION_DATE FROM mail WHERE USER_ID = ? AND MAIL_TITLE = ?";
             params = new String[]{MailUtil.user_id, "%" + searchWord + "%"};
         }
+        if(importantYN != null && importantYN.equals("Y")) {
+            sql = sql.concat(" AND MAIL_IMPORTANT = 'Y'");
+        }
+        sql = sql.concat(" ORDER BY MAIL_DATE DESC");
 
         resultSet = dbUtil.executeQuery(sql, params);
         List<Mail> mailList = new ArrayList<>();
@@ -113,6 +117,37 @@ public class MailDAO {
                 result[i][1] = mailList.get(i).getMail_from();
                 result[i][2] = mailList.get(i).getMail_date();
                 result[i][3] = mailList.get(i).getMail_important();
+                result[i][4] = Integer.toString(mailList.get(i).getMail_seq());
+            }
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            if(resultSet != null) {
+                try {
+                    resultSet.close();
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return result;
+    }
+
+    public boolean updateMailImportant(int mail_seq) {
+        boolean result = false;
+
+        if(mail_seq < 1) {
+            return result;
+        }
+        try {
+            String sql = "UPDATE mail SET MAIL_IMPORTANT = IF(MAIL_IMPORTANT = 'Y', 'N', 'Y') WHERE MAIL_SEQ = ?";
+            String[] params = {Integer.toString(mail_seq)};
+            int rowCount = dbUtil.executeUpdate(sql, params);
+            if(rowCount == 1) {
+                result = true;
             }
         }
         catch(Exception e) {

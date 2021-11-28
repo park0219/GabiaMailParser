@@ -9,27 +9,19 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 public class MainView extends JFrame {
 
     private static final long serialVersionUID = 5870864087464173884L;
-
-    private final int maxPageNum = 99;
-
     private JPanel jPanelNorth, jPanelCenter;
-    private JButton jButtonAdd, jButtonUpdate,
-            jButtonFind;
-    private JLabel currPageNumJLabel;
+    private JButton jButtonAdd, jButtonUpdate, jButtonFind;
     private JTextField condition;
     public static JTable jTable;
     private JScrollPane jScrollPane;
     private DefaultTableModel myTableModel;
 
-    public static String[] columns = {AppConstants.MAIL_TITLE, AppConstants.MAIL_FROM, AppConstants.MAIL_DATE, AppConstants.MAIL_IMPORTANT};
+    public static String[] columns = {AppConstants.MAIL_TITLE, AppConstants.MAIL_FROM, AppConstants.MAIL_DATE, AppConstants.MAIL_IMPORTANT, "MAIL_SEQ"};
 
     public MainView() {
         init();
@@ -69,13 +61,40 @@ public class MainView extends JFrame {
         // 메일 목록 가져오기
         int newMailNum = MailUtil.getMailListFromServer();
 
-        String[][] result = MailDAO.getInstance().selectMailList("");
-        myTableModel = new DefaultTableModel(result, columns);
+        String[][] result = MailDAO.getInstance().selectMailList("", "N");
+        myTableModel = new DefaultTableModel(result, columns) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         jTable = new JTable(myTableModel);
         DefaultTableCellRenderer cr = new DefaultTableCellRenderer();
         cr.setHorizontalAlignment(JLabel.CENTER);
         jTable.setDefaultRenderer(Object.class, cr);
         initJTable(jTable, result);
+        jTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(e.getClickCount() == 2) {
+                    int row = jTable.rowAtPoint(e.getPoint());
+                    int mail_seq = Integer.parseInt(jTable.getValueAt(row, 4).toString());
+                    String mail_important = jTable.getValueAt(row, 3).toString();
+
+                    if(MailDAO.getInstance().updateMailImportant(mail_seq)) {
+                        if(mail_important.equals("Y")) {
+                            jTable.setValueAt("N", row, 3);
+                        }
+                        else {
+                            jTable.setValueAt("Y", row, 3);
+                        }
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(null, AppConstants.IMPORTANT_FAIL);
+                    }
+                }
+            }
+        });
 
         jScrollPane = new JScrollPane(jTable);
         jPanelCenter.add(jScrollPane);
@@ -112,6 +131,10 @@ public class MainView extends JFrame {
         fourthColumn.setPreferredWidth(100);
         fourthColumn.setMaxWidth(100);
         fourthColumn.setMinWidth(100);
+        TableColumn fifthColumn = jTable.getColumnModel().getColumn(4);
+        fifthColumn.setPreferredWidth(0);
+        fifthColumn.setMaxWidth(0);
+        fifthColumn.setMinWidth(0);
     }
 
     private class FindListener extends KeyAdapter {

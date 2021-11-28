@@ -19,7 +19,7 @@ public class MailReloadUtil extends TimerTask {
         if(MailUtil.user_id != null && !MailUtil.user_id.equals("")) {
 
             int newMailNum = MailUtil.getMailListFromServer();
-            String[][] result = MailDAO.getInstance().selectMailList("");
+            String[][] result = MailDAO.getInstance().selectMailList("", "N");
             initJTable(jTable, result);
 
             if(newMailNum > 0) {
