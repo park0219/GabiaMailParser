@@ -44,14 +44,17 @@ public class AppConstants {
     // add view
     public static final String ADDVIEW_TITLE = "添加学生信息";
     public static final String ADDVIEW_ADDBUTTON = "添加";
-    public static final String EXITBUTTON = "退出";
+    public static final String EXITBUTTON = "취소";
 
     // delete view
     public static final String DELETEVIEW_TITLE = "删除学生信息";
     public static final String DELETEVIEW_DELETEBUTTON = "删除";
 
-    // update view
-    public static final String UPDATEVIEW_TITLE = "更新学生信息";
-    public static final String UPDATEVIEW_UPDATEBUTTON = "更新";
+    // 템플릿 수정
+    public static final String TEMPLATEVIEW_TITLE = "템플릿 수정";
+    public static final String TEMPLATEVIEW_UPDATEBUTTON = "저장";
+    public static final String TEMPLATEVIEW_LABEL = "메일을 작성할 때 사용할 템플릿을 등록하세요.";
+    public static final String TEMPLATEVIEW_UPDATESUCCESS = "템플릿을 수정하였습니다.";
+    public static final String TEMPLATEVIEW_UPDATEFAIL = "템플릿을 수정하는 과정에서 오류가 발생했습니다.";
 
 }

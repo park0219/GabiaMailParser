@@ -51,11 +51,10 @@ public class MainView extends JFrame {
             //new AddView();
         });
         jPanelNorth.add(jButtonAdd);
-        // update
+
+        // 템플릿 수정
         jButtonUpdate = new JButton(AppConstants.MAILVIEW_TEMP_UPDATE);
-        jButtonUpdate.addActionListener(e -> {
-            //new UpdateView();
-        });
+        jButtonUpdate.addActionListener(e -> new TemplateView());
         jPanelNorth.add(jButtonUpdate);
 
         // 중요 메일 토글 버튼
@@ -123,7 +122,7 @@ public class MainView extends JFrame {
 
         setBounds(400, 200, 1200, 700);
         setResizable(false);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
 
         if(newMailNum > 0) {
