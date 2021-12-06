@@ -1,6 +1,7 @@
 package me.park.GabiaMailParser.view;
 
 import me.park.GabiaMailParser.AppConstants;
+import me.park.GabiaMailParser.GabiaMailParserMain;
 import me.park.GabiaMailParser.dao.TemplateDAO;
 import me.park.GabiaMailParser.model.Template;
 
@@ -24,6 +25,8 @@ public class TemplateView extends JFrame {
 
     private void init() {
         setTitle(AppConstants.TEMPLATEVIEW_TITLE);
+        setIconImage(GabiaMailParserMain.img);
+
         // center panel
         jPanelCenter = new JPanel();
         jPanelCenter.setLayout(new BorderLayout());

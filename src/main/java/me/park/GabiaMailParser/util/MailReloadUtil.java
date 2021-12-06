@@ -1,12 +1,12 @@
 package me.park.GabiaMailParser.util;
 
 import me.park.GabiaMailParser.AppConstants;
+import me.park.GabiaMailParser.GabiaMailParserMain;
 import me.park.GabiaMailParser.dao.MailDAO;
 import me.park.GabiaMailParser.view.MainView;
 
 import javax.swing.*;
 import java.awt.*;
-import java.net.MalformedURLException;
 import java.util.TimerTask;
 
 import static me.park.GabiaMailParser.view.MainView.initJTable;
@@ -41,9 +41,7 @@ public class MailReloadUtil extends TimerTask {
         try {
             SystemTray tray = SystemTray.getSystemTray();
 
-            Image image = Toolkit.getDefaultToolkit().createImage("icon.png");
-
-            TrayIcon trayIcon = new TrayIcon(image, AppConstants.NEW_MAIL_TITLE);
+            TrayIcon trayIcon = new TrayIcon(GabiaMailParserMain.img, AppConstants.NEW_MAIL_TITLE);
             trayIcon.setImageAutoSize(true);
             trayIcon.setToolTip(AppConstants.NEW_MAIL_TITLE);
             tray.add(trayIcon);

@@ -2,6 +2,7 @@ package me.park.GabiaMailParser.view;
 
 import com.sun.mail.imap.protocol.Item;
 import me.park.GabiaMailParser.AppConstants;
+import me.park.GabiaMailParser.GabiaMailParserMain;
 import me.park.GabiaMailParser.dao.MailDAO;
 import me.park.GabiaMailParser.util.MailUtil;
 
@@ -32,6 +33,7 @@ public class MainView extends JFrame {
 
     private void init() {
         setTitle(AppConstants.MAINVIEW_TITLE);
+        setIconImage(GabiaMailParserMain.img);
 
         // 윗쪽 패널
         jPanelNorth = new JPanel();

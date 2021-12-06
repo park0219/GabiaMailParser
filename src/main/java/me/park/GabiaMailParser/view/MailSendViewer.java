@@ -1,6 +1,7 @@
 package me.park.GabiaMailParser.view;
 
 import me.park.GabiaMailParser.AppConstants;
+import me.park.GabiaMailParser.GabiaMailParserMain;
 import me.park.GabiaMailParser.dao.TemplateDAO;
 import me.park.GabiaMailParser.model.Template;
 import me.park.GabiaMailParser.util.MailUtil;
@@ -27,6 +28,7 @@ public class MailSendViewer extends JFrame {
 
     private void init() {
         setTitle(AppConstants.MAILSENDVIEW_TITLE);
+        setIconImage(GabiaMailParserMain.img);
         jPanelCenter = new JPanel();
         jPanelCenter.setLayout(new FlowLayout());
 

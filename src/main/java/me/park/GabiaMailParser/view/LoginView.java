@@ -1,6 +1,7 @@
 package me.park.GabiaMailParser.view;
 
 import me.park.GabiaMailParser.AppConstants;
+import me.park.GabiaMailParser.GabiaMailParserMain;
 import me.park.GabiaMailParser.dao.LoginDAO;
 import me.park.GabiaMailParser.util.DBUtil;
 import me.park.GabiaMailParser.util.MailUtil;
@@ -26,6 +27,7 @@ public class LoginView extends JFrame {
 
     private void init() {
         this.setTitle(AppConstants.LOGIN_TITLE);
+        setIconImage(GabiaMailParserMain.img);
 
         jPanelCenter = new JPanel();
         jPanelCenter.setLayout(new GridLayout(3, 2));
