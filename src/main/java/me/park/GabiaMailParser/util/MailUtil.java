@@ -6,6 +6,8 @@ import me.park.GabiaMailParser.dao.MailDAO;
 import me.park.GabiaMailParser.model.Mail;
 
 import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.internet.MimeUtility;
 import java.io.IOException;
@@ -37,14 +39,14 @@ public class MailUtil {
             properties.put("mail.store.protocol", "pop3");
             properties.put("mail.transport.protocol", "smtp");
 
-            /* session = Session.getDefaultInstance(properties,
+            session = Session.getDefaultInstance(properties,
                     new Authenticator() {
                         protected PasswordAuthentication getPasswordAuthentication() {
                             return new PasswordAuthentication(id, pw);
                         }
-                    });*/
+                    });
 
-            session = Session.getInstance(properties, null);
+            //session = Session.getInstance(properties, null);
 
             store = session.getStore("pop3");
             store.connect(AppConstants.POPSERVER, id, pw);
@@ -153,5 +155,30 @@ public class MailUtil {
         else {
             return base64Decode(address.toString());
         }
+    }
+
+    public static boolean sendMail(String title, String sendEmail, String content) {
+
+        boolean result = false;
+
+        try {
+            //메세지 설정
+            Message msg = new MimeMessage(session);
+
+            //보내는사람 받는사람 설정
+            //보내는 사람 이메일 입력
+            msg.setFrom(new InternetAddress(user_id));
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(sendEmail, false));
+            msg.setSubject(title);
+            msg.setContent(content, "text/html; charset=utf-8");
+            msg.setSentDate(new Date());
+            Transport.send(msg);
+            result = true;
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
     }
 }

@@ -6,7 +6,7 @@ public class AppConstants {
     public static final String JDBC_URL = "jdbc:mysql://192.168.0.148:3306/mail?serverTimezone=UTC";
     public static final String JDBC_USERNAME = "mail";
     public static final String JDBC_PASSWORD = "1234";
-    public static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    public static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
 
     // mail
     public static final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
@@ -41,14 +41,18 @@ public class AppConstants {
     public static final String TOGGLE_ALL = "전체 메일";
     public static final String TOGGLE_IMPORTANT = "중요 메일";
 
-    // add view
-    public static final String ADDVIEW_TITLE = "添加学生信息";
-    public static final String ADDVIEW_ADDBUTTON = "添加";
+    // 메일 전송
+    public static final String MAILSENDVIEW_TITLE = "메일 보내기";
+    public static final String MAILSENDVIEW_SENDBUTTON = "전송";
     public static final String EXITBUTTON = "취소";
-
-    // delete view
-    public static final String DELETEVIEW_TITLE = "删除学生信息";
-    public static final String DELETEVIEW_DELETEBUTTON = "删除";
+    public static final String MAILSENDVIEW_RECEIVER = "받는 사람";
+    public static final String MAILSENDVIEW_MAILTITLE = "제목";
+    public static final String MAILSENDVIEW_CONTENT = "내용";
+    public static final String SENDMAIL_FAIL = "메일 형식에 맞춰서 입력해주세요";
+    public static final String TITLE_FAIL = "메일 제목을 입력해주세요.";
+    public static final String CONTENT_FAIL = "메일 내용을 입력해주세요.";
+    public static final String MAILSEND_SUCCESS = "메일 발송에 성공했습니다.";
+    public static final String MAILSEND_FAIL = "메일 발송에 실패했습니다.";
 
     // 템플릿 수정
     public static final String TEMPLATEVIEW_TITLE = "템플릿 수정";

@@ -35,7 +35,7 @@ public class MainView extends JFrame {
 
         // 윗쪽 패널
         jPanelNorth = new JPanel();
-        jPanelNorth.setLayout(new GridLayout(1, 6));
+        jPanelNorth.setLayout(new GridLayout(1, 6, 0, 0));
         condition = new JTextField();
         condition.addKeyListener(new FindListener());
         jPanelNorth.add(condition);
@@ -47,9 +47,7 @@ public class MainView extends JFrame {
         //
         jPanelNorth.add(jButtonFind);
         jButtonAdd = new JButton(AppConstants.MAILVIEW_WRITE);
-        jButtonAdd.addActionListener(e -> {
-            //new AddView();
-        });
+        jButtonAdd.addActionListener(e -> new MailSendViewer());
         jPanelNorth.add(jButtonAdd);
 
         // 템플릿 수정
