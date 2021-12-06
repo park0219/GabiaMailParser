@@ -48,7 +48,7 @@ public class LoginView extends JFrame {
         this.add(jPanelCenter, BorderLayout.CENTER);
         this.add(jPanelSouth, BorderLayout.SOUTH);
 
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setBounds(450, 250, 375, 140);
         this.setResizable(false);
         this.setVisible(true);
