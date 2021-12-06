@@ -1,9 +1,11 @@
 package me.park.GabiaMailParser.dao;
 
+import me.park.GabiaMailParser.AppConstants;
 import me.park.GabiaMailParser.model.Mail;
 import me.park.GabiaMailParser.util.DBUtil;
 import me.park.GabiaMailParser.util.MailUtil;
 
+import javax.swing.*;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +42,8 @@ public class MailDAO {
         }
         catch(Exception e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, AppConstants.DB_CONNECTION_ERROR);
+            System.exit(0);
         }
         finally {
             if(resultSet != null) {
@@ -70,6 +74,8 @@ public class MailDAO {
         }
         catch(Exception e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, AppConstants.DB_CONNECTION_ERROR);
+            System.exit(0);
         }
         finally {
             if(resultSet != null) {
@@ -122,6 +128,8 @@ public class MailDAO {
         }
         catch(Exception e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, AppConstants.DB_CONNECTION_ERROR);
+            System.exit(0);
         }
         finally {
             if(resultSet != null) {
@@ -152,6 +160,8 @@ public class MailDAO {
         }
         catch(Exception e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, AppConstants.DB_CONNECTION_ERROR);
+            System.exit(0);
         }
         finally {
             if(resultSet != null) {

@@ -1,9 +1,10 @@
 package me.park.GabiaMailParser.dao;
 
+import me.park.GabiaMailParser.AppConstants;
 import me.park.GabiaMailParser.util.DBUtil;
 
+import javax.swing.*;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class LoginDAO {
 
@@ -35,6 +36,8 @@ public class LoginDAO {
         }
         catch(Exception e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, AppConstants.DB_CONNECTION_ERROR);
+            System.exit(0);
         }
 
         return result;

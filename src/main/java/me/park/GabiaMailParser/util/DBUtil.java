@@ -2,6 +2,7 @@ package me.park.GabiaMailParser.util;
 
 import me.park.GabiaMailParser.AppConstants;
 
+import javax.swing.*;
 import java.sql.*;
 
 public class DBUtil {
@@ -33,6 +34,8 @@ public class DBUtil {
         }
         catch(SQLException e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, AppConstants.DB_CONNECTION_ERROR);
+            System.exit(0);
         }
         return result;
     }
@@ -52,6 +55,8 @@ public class DBUtil {
         }
         catch(SQLException e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, AppConstants.DB_CONNECTION_ERROR);
+            System.exit(0);
         }
         return result;
     }
@@ -66,6 +71,8 @@ public class DBUtil {
         }
         catch(Exception e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, AppConstants.DB_CONNECTION_ERROR);
+            System.exit(0);
         }
         return resultSet;
     }
@@ -83,6 +90,8 @@ public class DBUtil {
         }
         catch(Exception e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, AppConstants.DB_CONNECTION_ERROR);
+            System.exit(0);
         }
 
         return resultSet;
@@ -99,8 +108,11 @@ public class DBUtil {
             return true;
         }
         catch(Exception e) {
-            return false;
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, AppConstants.DB_CONNECTION_ERROR);
+            System.exit(0);
         }
+        return false;
     }
 
     private Connection getConn() {
@@ -112,6 +124,8 @@ public class DBUtil {
         }
         catch(Exception e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, AppConstants.DB_CONNECTION_ERROR);
+            System.exit(0);
         }
         return connection;
     }
@@ -130,6 +144,8 @@ public class DBUtil {
         }
         catch(SQLException e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, AppConstants.DB_CONNECTION_ERROR);
+            System.exit(0);
         }
     }
 }

@@ -7,6 +7,7 @@ public class AppConstants {
     public static final String JDBC_USERNAME = "mail";
     public static final String JDBC_PASSWORD = "1234";
     public static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+    public static final String DB_CONNECTION_ERROR = "DB 연결에 실패하였습니다.\n프로그램을 종료합니다.";
 
     // mail
     public static final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
