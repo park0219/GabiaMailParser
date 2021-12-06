@@ -77,6 +77,7 @@ public class MailSendViewer extends JFrame {
 
             if((MailUtil.sendMail(title, sendEmail, content))) {
                 JOptionPane.showMessageDialog(null, AppConstants.MAILSEND_SUCCESS);
+                dispose();
             }
             else {
                 JOptionPane.showMessageDialog(null, AppConstants.MAILSEND_FAIL);
