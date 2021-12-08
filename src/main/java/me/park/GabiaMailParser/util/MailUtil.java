@@ -10,7 +10,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.internet.MimeUtility;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
@@ -165,7 +164,7 @@ public class MailUtil {
             //메세지 설정
             Message msg = new MimeMessage(session);
 
-            //보내는사람 받는사람 설정
+            //보내는 사람 받는사람 설정
             //보내는 사람 이메일 입력
             msg.setFrom(new InternetAddress(user_id));
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(sendEmail, false));
