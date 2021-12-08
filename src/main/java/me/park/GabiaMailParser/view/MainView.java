@@ -1,6 +1,5 @@
 package me.park.GabiaMailParser.view;
 
-import com.sun.mail.imap.protocol.Item;
 import me.park.GabiaMailParser.AppConstants;
 import me.park.GabiaMailParser.GabiaMailParserMain;
 import me.park.GabiaMailParser.dao.MailDAO;
@@ -11,7 +10,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MainView extends JFrame {
 
@@ -46,7 +48,6 @@ public class MainView extends JFrame {
         jButtonFind = new JButton(AppConstants.MAILVIEW_FIND);
         jButtonFind.addActionListener(e -> find());
         jButtonFind.addKeyListener(new FindListener());
-        //
         jPanelNorth.add(jButtonFind);
         jButtonAdd = new JButton(AppConstants.MAILVIEW_WRITE);
         jButtonAdd.addActionListener(e -> new MailSendViewer());
@@ -67,6 +68,7 @@ public class MainView extends JFrame {
         jToggleButton1.addItemListener(e -> {
             String[][] result = MailDAO.getInstance().selectMailList("", MainView.jToggleButton1.isSelected() ? "N" : "Y");
             initJTable(jTable, result);
+            condition.setText("");
         });
 
         jPanelNorth.add(jToggleButton1);
