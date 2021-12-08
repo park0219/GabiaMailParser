@@ -2,14 +2,14 @@ package me.park.GabiaMailParser;
 
 public class AppConstants {
 
-    // jdbc
-    public static final String JDBC_URL = "jdbc:mysql://192.168.0.148:3306/mail?serverTimezone=UTC";
-    public static final String JDBC_USERNAME = "mail";
+    // DB 연결 정보
+    public static final String JDBC_URL = "jdbc:mysql://localhost:3306/mail?serverTimezone=UTC";
+    public static final String JDBC_USERNAME = "root";
     public static final String JDBC_PASSWORD = "1234";
     public static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     public static final String DB_CONNECTION_ERROR = "DB 연결에 실패하였습니다.\n프로그램을 종료합니다.";
 
-    // mail
+    // 메일 서버 정보
     public static final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
     public static final String POPSERVER = "pop3s.hiworks.com";
     public static final String SMTPSERVER = "smtps.hiworks.com";
@@ -26,14 +26,14 @@ public class AppConstants {
     public static final String MAIL_DATE = "보낸날짜";
     public static final String MAIL_IMPORTANT = "중요메일";
 
-    // login view
-    public static final String LOGIN_TITLE = "가비아 계정으로 로그인하기";
-    public static final String LOGIN_USERNAME = "아이디";
+    // 로그인 화면
+    public static final String LOGIN_TITLE = "로그인";
+    public static final String LOGIN_USERNAME = "아이디(가비아 계정)";
     public static final String LOGIN_PASSWORD = "비밀번호";
     public static final String LOGIN = "로그인";
     public static final String LOGIN_FAIL = "로그인에 실패하였습니다.";
 
-    // main view
+    // 목록 화면
     public static final String MAINVIEW_TITLE = "메일 목록";
     public static final String MAILVIEW_FIND = "제목으로 검색";
     public static final String MAILVIEW_WRITE = "메일 쓰기";
@@ -42,8 +42,8 @@ public class AppConstants {
     public static final String TOGGLE_ALL = "전체 메일";
     public static final String TOGGLE_IMPORTANT = "중요 메일";
 
-    // 메일 전송
-    public static final String MAILSENDVIEW_TITLE = "메일 보내기";
+    // 메일 전송 화면
+    public static final String MAILSENDVIEW_TITLE = "메일 쓰기";
     public static final String MAILSENDVIEW_SENDBUTTON = "전송";
     public static final String EXITBUTTON = "취소";
     public static final String MAILSENDVIEW_RECEIVER = "받는 사람";
@@ -55,7 +55,7 @@ public class AppConstants {
     public static final String MAILSEND_SUCCESS = "메일 발송에 성공했습니다.";
     public static final String MAILSEND_FAIL = "메일 발송에 실패했습니다.";
 
-    // 템플릿 수정
+    // 템플릿 수정 화면
     public static final String TEMPLATEVIEW_TITLE = "템플릿 수정";
     public static final String TEMPLATEVIEW_UPDATEBUTTON = "저장";
     public static final String TEMPLATEVIEW_LABEL = "메일을 작성할 때 사용할 템플릿을 등록하세요.";
