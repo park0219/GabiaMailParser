@@ -4,8 +4,9 @@ import me.park.GabiaMailParser.util.MailReloadUtil;
 import me.park.GabiaMailParser.view.LoginView;
 
 import java.awt.*;
-import java.util.Date;
-import java.util.Timer;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class GabiaMailParserMain {
 
@@ -15,9 +16,9 @@ public class GabiaMailParserMain {
         new LoginView();
 
         //스케쥴러
-        Timer timer = new Timer();
         MailReloadUtil mailReloadUtil = new MailReloadUtil();
-        timer.schedule(mailReloadUtil, new Date(System.currentTimeMillis() + AppConstants.RELOAD_TIME), AppConstants.RELOAD_TIME);
+        ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+        scheduledExecutorService.scheduleAtFixedRate(mailReloadUtil.runnable, 0, AppConstants.RELOAD_TIME, TimeUnit.MINUTES);
 
     }
 }

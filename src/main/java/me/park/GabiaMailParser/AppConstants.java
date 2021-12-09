@@ -16,7 +16,7 @@ public class AppConstants {
     public static final String SMTPPORT = "465";
 
     //스케쥴러
-    public static final int RELOAD_TIME = 10 * 60 * 1000;
+    public static final int RELOAD_TIME = 10;
     public static final String NEW_MAIL = "개의 새로운 메일이 등록되었습니다.";
     public static final String NEW_MAIL_TITLE = "가비아 메일 알림";
 

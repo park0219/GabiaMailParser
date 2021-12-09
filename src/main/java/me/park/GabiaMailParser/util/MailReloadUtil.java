@@ -7,15 +7,13 @@ import me.park.GabiaMailParser.view.MainView;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.TimerTask;
 
 import static me.park.GabiaMailParser.view.MainView.initJTable;
 import static me.park.GabiaMailParser.view.MainView.jTable;
 
-public class MailReloadUtil extends TimerTask {
+public class MailReloadUtil {
 
-    @Override
-    public void run() {
+    public Runnable runnable = () -> {
         //로그인 되어 있으면 메일을 10분 마다 로딩
         if(MailUtil.user_id != null && !MailUtil.user_id.equals("")) {
 
@@ -35,7 +33,7 @@ public class MailReloadUtil extends TimerTask {
                 JOptionPane.showMessageDialog(null, newMailNum + AppConstants.NEW_MAIL);
             }
         }
-    }
+    };
 
     public void displayTray(String message) {
         try {
