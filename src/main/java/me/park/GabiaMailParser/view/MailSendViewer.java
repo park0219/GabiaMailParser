@@ -60,7 +60,7 @@ public class MailSendViewer extends JFrame {
             String sendEmail = text.getText().trim();
             String title = text2.getText().trim();
             String content = text4.getText().trim();
-            if(sendEmail.equals("") && validEmail(sendEmail)) {
+            if(sendEmail.equals("") || validEmail(sendEmail)) {
                 JOptionPane.showMessageDialog(null, AppConstants.SENDMAIL_FAIL);
                 return;
             }
@@ -98,12 +98,12 @@ public class MailSendViewer extends JFrame {
     }
 
     public static boolean validEmail(String email) {
-        boolean result = false;
+        boolean result = true;
         String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
         if(matcher.matches()) {
-            result = true;
+            result = false;
         }
         return result;
     }
